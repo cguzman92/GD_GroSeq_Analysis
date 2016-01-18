@@ -67,17 +67,21 @@ Example of four-way:
 - Fastq files were taken as documented in the README.md file in the GroSeq folder.
 
 - The three fastq files were then merged together using the cat function:
+    
     $ cat '/home/carlos/workspace/GenomicsData/data/GRO-Seq/fastq/SRR828695/SRR828695.fastq' '/home/carlos/workspace/GenomicsData/data/GRO-Seq/fastq/SRR828696/SRR828696.fastq' '/home/carlos/workspace/GenomicsData/data/GRO-Seq/fastq/SRR828729/SRR828729.fastq' > groseq_1_2_3_merged.fastq
 
 - We then mapped the merged fastq file using bowtie v1.1.2 allowing for 2 mismatches:
+
     $ bowtie ~/libraries/bowtie-1.1.2/indexes/hg19 -n 2 -S -p 8 -q '/home/carlos/workspace/GenomicsData/data/GRO-Seq/fastq/groseq_1_2_3_merged.fastq' > groseq_1_2_3.sam
 
 - The mapped SAM file was then converted to sorted BAM using samtools v1.3:
+
     $ samtools view -b '/home/carlos/workspace/GenomicsData/analysis/bowtie/groseq_1_2_3.sam' -o groseq_1_2_3.bam
 
     $ samtools sort -@ 8 '/home/carlos/workspace/GenomicsData/analysis/samtools/groseq_1_2_3.bam' > groseq_1_2_3_sorted.bam
 
 - Sorted BAM file is used as input for bedtools to obtain coverage files (1 for positive and 1 for negative strands):
+
     $ genomeCoverageBed -bga -5 -strand - -ibam <bamFile> > coverage_neg.bedGraph
     $ genomeCoverageBed -bga -5 -strand + -ibam groseq_1_2_3_sorted.bam > coverage_pos.bedGraph
 
