@@ -6,7 +6,7 @@ GroSeq Documentation for GenomicsData paper.
 
 This README file was generated to document all analysis and thought process for this particular project.
 
-## Metagene / Heatmap generation:
+## Metagene / Heatmap generation: (THIS IS FOR ARCHIVED PURPOSES! THE HEATMAPS AND METAGENES GENERATED WERE DONE USING HOMER AS EXPLAINED IN OUR ORIGINAL PAPER)
 
 Both metagene / heatmaps will be generated using ngsplot version 2.61. I will need to create figures for:
 
@@ -46,7 +46,7 @@ Bash code and parameters are as follows (You can alter -L parameter for your pre
 
     $ ngs.plot.r -G hg19 -R tss -C '/home/carlos/workspace/GenomicsData/data/ChIP-Seq/H3K27Ac/H3K27.mapped.rgid.sorted.filtered.dups_remove.bam' -O h3k27ac_ngsplot -F protein_coding -D refseq -L 1000 -P 0 -CO yellow -GO max -T "H3K27Ac"
 
-## Co-occupancy Analysis
+## Co-occupancy Analysis (THIS IS FOR ARCHIVED PURPOSES, THE ORIGINAL MYSQL FILE WAS RE-LOADED AND ALL SUBSEQUENTIAL CO-OCCUPANCY ANALYSIS WAS DONE USING CUSTOM PYTHON SCRIPTS)
 
 Original analysis was done by Jonathan Reeder using a custom made script python script using python 2.7.6. New pairwise co-occupancy analysis requires that I use a version 2.24 of bedtools since MySQL database is not up and thus makes the analysis difficult. Numbers should be similar as previously shown in other trials.
 
